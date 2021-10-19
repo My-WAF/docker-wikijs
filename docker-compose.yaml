@@ -1,0 +1,17 @@
+version: "2.1"
+services:
+  wikijs:
+    build:
+      context: .
+      dockerfile: Dockerfile.aarch64
+    container_name: wikijs
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Ho_Chi_Minh
+    volumes:
+      - <path to config>:/config
+      - <path to data>:/data
+    ports:
+      - 3000:3000
+    restart: unless-stopped
